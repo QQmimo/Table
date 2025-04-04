@@ -51,7 +51,7 @@ export class Textbox extends React.Component<ITextboxProps, ITextboxState> {
                     text: value
                 };
             }
-            return {};
+            return null;
         }, actionUpdate);
     }
 
@@ -66,12 +66,7 @@ export class Textbox extends React.Component<ITextboxProps, ITextboxState> {
 
     private _onChanged = (e: React.KeyboardEvent<HTMLInputElement>): void => {
         if (e.code === "Enter" || e.code === "NumpadEnter") {
-            const value: string = e.currentTarget.value ?? "";
-            this._onUpdate(value, () => {
-                if (this.props.onChanged) {
-                    this.props.onChanged(value);
-                }
-            });
+            e.currentTarget?.blur();
         }
     }
 
