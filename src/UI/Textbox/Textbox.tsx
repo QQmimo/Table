@@ -19,7 +19,6 @@ export class Textbox extends React.Component<ITextboxProps, ITextboxState> {
             this.setState({
                 ...diff
             })
-            console.log(diff);
         }
     }
 
@@ -38,8 +37,7 @@ export class Textbox extends React.Component<ITextboxProps, ITextboxState> {
                     onChange={this._onChange}
                     onKeyDown={this._onChanged}
                     onBlur={this._onBlur}
-                >
-                </input>
+                />
             </div>
         );
     }
