@@ -1,8 +1,23 @@
 import React from 'react'
-import { Button, Select, Textbox } from './UI';
+import { Button, ISelectItem, Select, Textbox } from './UI';
 import styles from './App.module.scss'
 
-export default class App extends React.Component {
+interface IState {
+  options: ISelectItem[]
+}
+
+export default class App extends React.Component<{}, IState> {
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      options: [
+        { key: '1', text: 'one' },
+        { key: '2', text: 'two' }
+      ]
+    };
+  }
+
   public render(): React.ReactNode {
     return (
       <div className={styles.app}>
@@ -17,18 +32,21 @@ export default class App extends React.Component {
         <Select
           id={'selecte_test'}
           label={'selector'}
-          options={[
-            { key: '1', text: 'one' },
-            { key: '2', text: 'two' }
-          ]}
-          onChanged={(key, text) => {
-            console.log(key, text);
+          options={this.state.options}
+          onChanged={(key) => {
+            console.log(key);
           }}
         />
         <Button
           text={'click!'}
           onClick={() => {
-            console.log('123');
+            this.setState(prevState => {
+              const opt = prevState.options;
+              opt.push({ key: (opt.length + 1).toString(), text: "three" });
+              return {
+                options: opt
+              };
+            });
           }}
         />
       </div>

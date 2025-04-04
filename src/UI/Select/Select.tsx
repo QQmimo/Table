@@ -8,7 +8,7 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
     constructor(props: Readonly<ISelectProps>) {
         super(props);
         this.state = {
-            label: this.props.label
+            label: this.props.label,
         };
     }
 
